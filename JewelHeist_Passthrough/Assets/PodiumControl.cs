@@ -6,6 +6,9 @@ using UnityEngine.Playables;
 
 public class PodiumControl : MonoBehaviour
 {
+    public static Action TimelineDone;
+
+
     private PlayableDirector _director;
 
     private Transform _player;
@@ -28,6 +31,11 @@ public class PodiumControl : MonoBehaviour
             _direction.y = 0;
             this.transform.rotation =  Quaternion.LookRotation(_direction, Vector3.up);
         }
+    }
+
+    public void TimelineFinished()
+    {
+        TimelineDone?.Invoke();
     }
 
     public void PlayTimeline()

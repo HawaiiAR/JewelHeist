@@ -12,8 +12,8 @@ namespace GameControl
     {
         public static Action<string> DifficultyLevel;
         public static Action<string> StartGame;
- 
-        [SerializeField] private CanvasGroup _menu;
+
+        [SerializeField] private GameObject _menu;
         [SerializeField] private GameObject _easy_btn;
         [SerializeField] private GameObject _hard_btn;
         [SerializeField] private GameObject _impossible_btn;
@@ -25,16 +25,19 @@ namespace GameControl
         [SerializeField] Color _gameOverColor;
         private string _difficultyLevel;
 
+        [SerializeField] GameObject _winLosePannel;
+        [SerializeField] private TMP_Text _winLose_txt;
+        
+
         // Start is called before the first frame update
         void Start()
         {
-       
+
             FireMines.LasersSet += ActivateStartButton;
             DrawLaser.HitPlayer = GameOver;
             SoundEmitter.TooLoud += GameOver;
-
-            _start_btn.SetActive(false);
-            _mainCamera.backgroundColor = _startColor;
+            PodiumControl.TimelineDone += DisplayMenu;
+            InitialSetup();
         }
 
 
@@ -43,6 +46,7 @@ namespace GameControl
             FireMines.LasersSet -= ActivateStartButton;
             DrawLaser.HitPlayer -= GameOver;
             SoundEmitter.TooLoud -= GameOver;
+            PodiumControl.TimelineDone -= DisplayMenu;
         }
 
         public void Difficulty(string _dificulty)
@@ -64,8 +68,7 @@ namespace GameControl
                
                     break;
             }
-
-            
+ 
         }
 
         private void ActivateStartButton()
@@ -80,12 +83,50 @@ namespace GameControl
         {
 
             StartGame?.Invoke(_difficultyLevel);
+            _start_btn.gameObject.SetActive(false);
             _menu.gameObject.SetActive(false);
         }
 
         private void GameOver()
         {
+            WinState("lose");
             _mainCamera.backgroundColor = _gameOverColor;
+            _menu.gameObject.SetActive(true);
+            _resetGame_btn.gameObject.SetActive(true);
+        }
+
+        private void WinState(string winState)
+        {
+            _menu.SetActive(true);
+            _winLosePannel.SetActive(true);
+
+            switch (winState)
+            {
+                case "win":
+                    _winLose_txt.text = "YOU WIN!";
+                    break;
+                case "lose":
+                    _winLose_txt.text = "YOU LOSE!";
+                    break;
+
+            }
+        }
+
+        private void InitialSetup()
+        {
+            _hard_btn.gameObject.SetActive(true);
+            _easy_btn.gameObject.SetActive(true);
+            _impossible_btn.gameObject.SetActive(true);
+
+            _menu.SetActive(false);
+            _start_btn.SetActive(false);
+            _winLosePannel.SetActive(false);
+            _mainCamera.backgroundColor = _startColor;
+        }
+
+        public void DisplayMenu()
+        {
+            _menu.SetActive(true);
         }
     }
 }
