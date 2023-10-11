@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 namespace lasers
 {
     public class DrawLaser : MonoBehaviour
     {
+        public static Action HitPlayer;
+
         public bool laserActivated = false;
         public bool swingLaser = false;
 
@@ -38,7 +41,7 @@ namespace lasers
 
         private void OnEnable()
         {
-            _rotSpeed = Random.Range(3, 5);
+            _rotSpeed = UnityEngine.Random.Range(3, 5);
         }
 
         // Update is called once per frame
@@ -71,7 +74,13 @@ namespace lasers
 
             if (Physics.Raycast(ray, out hit, _rayDistance))
             {
-                _laserEnd = hit.point;           
+                _laserEnd = hit.point;
+
+                if (hit.collider.CompareTag("MainCamera"))
+                {
+                    HitPlayer?.Invoke();
+                }
+
             }
             else
             {

@@ -60,17 +60,21 @@ namespace lasers
 
                 this.transform.forward = collision.contacts[0].normal;
                 this.transform.position = collision.contacts[0].point;
-                _laser.laserActivated = true;
-                
 
                 _min = new Vector3(_laserBody.transform.localPosition.x - _distance, _laserBody.transform.localPosition.y, _laserBody.transform.localPosition.z);
                 _max = new Vector3(_laserBody.transform.localPosition.x + _distance, _laserBody.transform.localPosition.y, _laserBody.transform.localPosition.z);
 
             }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
 
         private void SetDifficulty(string _difficulty)
         {
+            _laser.laserActivated = true;
+
             switch (_difficulty)
             {
                 case "easy":
