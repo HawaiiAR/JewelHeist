@@ -71,6 +71,7 @@ namespace GameControl
                     DifficultyLevel?.Invoke(_dificulty);        
                     break;
             }
+
             _menu.SetActive(false);
         }
 
@@ -95,14 +96,14 @@ namespace GameControl
         {
             WinState("lose");
             _mainCamera.backgroundColor = _gameOverColor;
-            _menu.gameObject.SetActive(true);
-            _resetGame_btn.gameObject.SetActive(true);
+           
         }
 
         private void WinState(string winState)
         {
             _menu.SetActive(true);
             _winLosePannel.SetActive(true);
+            _resetGame_btn.gameObject.SetActive(true);
 
             switch (winState)
             {

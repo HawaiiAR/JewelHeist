@@ -12,6 +12,7 @@ public class JewelControl : MonoBehaviour
     {
         if (other.CompareTag("SafeZone"))
         {
+            Debug.Log("Player Wins");
             PlayerWon?.Invoke("win");
         }
     }

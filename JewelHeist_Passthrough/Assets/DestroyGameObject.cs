@@ -9,12 +9,12 @@ public class DestroyGameObject : MonoBehaviour
    private void OnEnable()
     {
 
-        GameController.ResetGame -= Destroy;
+        GameController.ResetGame += Destroy;
     }
 
     private void OnDisable()
     {
-        GameController.ResetGame += Destroy;
+        GameController.ResetGame -= Destroy;
     }
 
     private void Destroy()

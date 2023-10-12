@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameControl;
 
 public class RayCaster : MonoBehaviour
 {
@@ -8,15 +9,18 @@ public class RayCaster : MonoBehaviour
     [SerializeField] private Transform _rayStart;
     [SerializeField] private float _rayDistance;
 
-   
-
     bool _lookForPodium;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        GameController.ResetGame += Reset;
         _lookForPodium = true;
+    }
+
+    private void OnDisable()
+    {
+        GameController.ResetGame -= Reset;
     }
 
     // Update is called once per frame
@@ -39,5 +43,10 @@ public class RayCaster : MonoBehaviour
 
           
         }
+    }
+
+    private void Reset()
+    {
+        _lookForPodium = true;
     }
 }

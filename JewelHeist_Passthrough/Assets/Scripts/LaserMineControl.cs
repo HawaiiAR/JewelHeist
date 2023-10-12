@@ -31,7 +31,7 @@ namespace lasers
 
         private void OnEnable()
         {
-          //  _gameController = FindObjectOfType<GameController>();
+            //  _gameController = FindObjectOfType<GameController>();
             _laser = GetComponentInChildren<DrawLaser>();
             _rb = this.GetComponent<Rigidbody>();
             _rb.isKinematic = false;
@@ -41,10 +41,12 @@ namespace lasers
         private void OnDisable()
         {
             GameController.StartGame -= SetDifficulty;
-           
+          
         }
 
-  
+
+
+
         // Update is called once per frame
         void Update()
         {
