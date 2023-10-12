@@ -14,6 +14,7 @@ namespace GameControl
         public static Action<string> StartGame;
 
         [SerializeField] private GameObject _menu;
+     
         [SerializeField] private GameObject _easy_btn;
         [SerializeField] private GameObject _hard_btn;
         [SerializeField] private GameObject _impossible_btn;
@@ -37,6 +38,7 @@ namespace GameControl
             DrawLaser.HitPlayer = GameOver;
             SoundEmitter.TooLoud += GameOver;
             PodiumControl.TimelineDone += DisplayMenu;
+            JewelControl.PlayerWon += WinState;
             InitialSetup();
         }
 
@@ -47,6 +49,7 @@ namespace GameControl
             DrawLaser.HitPlayer -= GameOver;
             SoundEmitter.TooLoud -= GameOver;
             PodiumControl.TimelineDone -= DisplayMenu;
+            JewelControl.PlayerWon -= WinState;
         }
 
         public void Difficulty(string _dificulty)
@@ -117,7 +120,7 @@ namespace GameControl
             _hard_btn.gameObject.SetActive(true);
             _easy_btn.gameObject.SetActive(true);
             _impossible_btn.gameObject.SetActive(true);
-
+            _resetGame_btn.SetActive(false);
             _menu.SetActive(false);
             _start_btn.SetActive(false);
             _winLosePannel.SetActive(false);

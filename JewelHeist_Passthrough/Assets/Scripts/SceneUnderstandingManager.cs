@@ -8,88 +8,77 @@ using System;
 
 namespace SceneUnderstanding 
 
-{ 
-public class SceneUnderstandingManager : MonoBehaviour
 {
-    [SerializeField] private OVRSceneManager _sceneManeger;
-    [SerializeField] private OVRSceneModelLoader _modelLoder;
-
-    [SerializeField] private GameObject _podium;
-
-    private void Awake()
+    public class SceneUnderstandingManager : MonoBehaviour
     {
-        _sceneManeger = GetComponent<OVRSceneManager>();
-    }
+        [SerializeField] private OVRSceneManager _sceneManeger;
+        [SerializeField] private OVRSceneModelLoader _modelLoder;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _sceneManeger.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
-    }
+        [SerializeField] private GameObject _podium;
+        [SerializeField] private GameObject _safeZone;
+        [SerializeField] private Transform _player;
 
-    private void OnDisable()
-    {
-        _sceneManeger.SceneModelLoadedSuccessfully -= OnSceneModelLoadedSuccessfully;
-    }
-
-    private void OnSceneModelLoadedSuccessfully()
-    {
-        StartCoroutine(AddCollidersToModel());
-    }
-
-    IEnumerator AddCollidersToModel()
-    {
-
-        yield return new WaitForEndOfFrame();
-
-        MeshRenderer[] _sceneObjects = FindObjectsOfType<MeshRenderer>();
-
-
-        foreach(var obj in _sceneObjects)
+        private void Awake()
         {
-            if(obj.GetComponent<Collider>()== null)
+            _sceneManeger = GetComponent<OVRSceneManager>();
+            _player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            _sceneManeger.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
+        }
+
+        private void OnDisable()
+        {
+            _sceneManeger.SceneModelLoadedSuccessfully -= OnSceneModelLoadedSuccessfully;
+        }
+
+        private void OnSceneModelLoadedSuccessfully()
+        {
+            StartCoroutine(AddCollidersToModel());
+        }
+
+        IEnumerator AddCollidersToModel()
+        {
+
+            yield return new WaitForEndOfFrame();
+
+            MeshRenderer[] _sceneObjects = FindObjectsOfType<MeshRenderer>();
+
+
+            foreach (var obj in _sceneObjects)
             {
-                  
-                            
+                if (obj.GetComponent<Collider>() == null)
+                {
+                    //make sure that the mesh prefab is using PlaneOVER mesh with furniture spawner and floor and plane prefabs added
                     BoxCollider box = obj.gameObject.AddComponent<BoxCollider>();
-                 //   Mesh mesh = obj.GetComponent<Mesh>();
-                   // box.size = new Vector3(mesh.bounds.size.x, mesh.bounds.size.y, mesh.bounds.size.z + .5f);
-                //    box.size = new Vector3(obj.gameObject.transform.localScale.x * 5, obj.gameObject.transform.localScale.y * 5, obj.gameObject.transform.localScale.z - .75f);
                     obj.gameObject.AddComponent<AttatchableSurface>();
                 }
-        }
+            }
 
-        OVRSemanticClassification[] _floors = FindObjectsOfType<OVRSemanticClassification>()
-        .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
-        .ToArray();
- 
-        foreach(var _floor in _floors)
-        {
-            Material _mat = _floor.gameObject.GetComponent<Renderer>().material;
-            _mat.SetColor("_Color", Color.red);
-            Debug.Log("Change floor Color");
-            Instantiate(_podium, _floor.transform.position, Quaternion.identity);
-        }
+            OVRSemanticClassification[] _floors = FindObjectsOfType<OVRSemanticClassification>()
+            .Where(c => c.Contains(OVRSceneManager.Classification.Floor))
+            .ToArray();
 
-        /*    OVRSemanticClassification[] _walls = FindObjectsOfType<OVRSemanticClassification>()
-         .Where(c => c.Contains(OVRSceneManager.Classification.WallFace))
-         .ToArray();
-
-            foreach (var _wall in _walls)
+            foreach (var _floor in _floors)
             {
-                _wall.gameObject.AddComponent<AttatchableSurface>();
-                Debug.Log("attatchable" + _wall.gameObject.name);
+                /* Material _mat = _floor.gameObject.GetComponent<Renderer>().material;
+                  _mat.SetColor("_Color", Color.red);
+                  Debug.Log("Change floor Color");*/
 
-              BoxCollider collider = _wall.GetComponent<BoxCollider>();
-               collider.size = new Vector3(_wall.gameObject.transform.localScale.x * 5, _wall.gameObject.transform.localScale.y * 5, _wall.gameObject.transform.localScale.z - .75f);
-;            }*/
+                //instantiate podium
+                Instantiate(_podium, _floor.transform.position, Quaternion.identity);
 
+                //instantiate safezone
+                Vector3 _safeZonePos = new Vector3(_player.transform.position.x, _floor.transform.position.y, _player.transform.position.z);
+                Instantiate(_safeZone, _safeZonePos, Quaternion.identity);
+
+            }
+     
         }
 
-        private void ResizeColliders(string _classificationName)
-        {
-         
-        }
 
-}
+    }
 }

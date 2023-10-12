@@ -30,17 +30,26 @@ namespace lasers
         private Vector3 _laserEnd;
         Vector3 _targetMin;
         Vector3 _targetMax;
+
+        bool _canHitPlayer;
        
 
         // Start is called before the first frame update
         void Start()
         {
-            _laser = this.GetComponent<LineRenderer>();
+            PlayerControl.PlayerSafe += LaserArmedState;
+            PlayerControl.PlayerTagable += LaserArmedState;
 
+            _laser = this.GetComponent<LineRenderer>();
+            _canHitPlayer = false;
         }
 
         private void OnEnable()
         {
+
+            PlayerControl.PlayerSafe -= LaserArmedState;
+            PlayerControl.PlayerTagable -= LaserArmedState;
+
             _rotSpeed = UnityEngine.Random.Range(3, 5);
         }
 
@@ -49,14 +58,12 @@ namespace lasers
         {
             if (laserActivated)
             {
-                ActivateLaser();
-                  
+                ActivateLaser();               
             }
             if (swingLaser)
             {
                 SwingLasers();
             }
-
         }
 
         private void SwingLasers()
@@ -75,10 +82,13 @@ namespace lasers
             if (Physics.Raycast(ray, out hit, _rayDistance))
             {
                 _laserEnd = hit.point;
-
-                if (hit.collider.CompareTag("MainCamera"))
+           
+                if (_canHitPlayer)
                 {
-                    HitPlayer?.Invoke();
+                    if (hit.collider.CompareTag("MainCamera"))
+                    {
+                        HitPlayer?.Invoke();
+                    }
                 }
 
             }
@@ -98,6 +108,11 @@ namespace lasers
             _laser.SetPosition(0, _laserStart);
             _laser.SetPosition(1, _end);
         
+        }
+
+        private void LaserArmedState(bool armedState)
+        {
+            _canHitPlayer = armedState;
         }
     }
 }

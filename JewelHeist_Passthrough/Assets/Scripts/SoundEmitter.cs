@@ -16,7 +16,6 @@ public class SoundEmitter : MonoBehaviour
     {
         GameController.StartGame += BoxIsArmed;
 
-        _rb = this.GetComponent<Rigidbody>();
         _canSoundAlarm = false;
     }
 
@@ -29,6 +28,7 @@ public class SoundEmitter : MonoBehaviour
     {
         Debug.Log("Armed");
         _canSoundAlarm = true;
+        _rb = this.GetComponent<Rigidbody>();
         _rb.isKinematic = false;
     }
 

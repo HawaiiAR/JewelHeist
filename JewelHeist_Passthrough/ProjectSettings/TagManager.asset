@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RoomLight
   - Hand
+  - SafeZone
   layers:
   - Default
   - TransparentFX
