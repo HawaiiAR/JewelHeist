@@ -10,10 +10,11 @@ public class SoundEmitter : MonoBehaviour
 
     bool _canSoundAlarm;
     Rigidbody _rb;
-    [SerializeField] float _velocityAmount;
+    [SerializeField] private float _velocityAmount;
 
     private void Start()
     {
+       
         GameController.StartGame += BoxIsArmed;
 
         _canSoundAlarm = false;
@@ -24,15 +25,31 @@ public class SoundEmitter : MonoBehaviour
         GameController.StartGame -= BoxIsArmed;
     }
 
-    private void BoxIsArmed(string gameStarted)
+    private void BoxIsArmed(string _difficulty)
     {
         Debug.Log("Armed");
         _canSoundAlarm = true;
         _rb = this.GetComponent<Rigidbody>();
         _rb.isKinematic = false;
+
+
+        switch (_difficulty)
+        {
+            case "easy":
+                _velocityAmount = 5;
+                break;
+            case "hard":
+                _velocityAmount = 2;
+                break;
+            case "impossible":
+                _velocityAmount = 1.5f;
+                break;
+
+
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<PlayerControl>(out PlayerControl _player)) return;
 

@@ -224,7 +224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5426489536395069416, guid: dabe14a813d7dca4599e7c8b5fcccc6d, type: 3}
+  - {fileID: 2100000, guid: 761017a441ccdcd4f8d7d16ed614aef9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -307,7 +307,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5426489536395069416, guid: dabe14a813d7dca4599e7c8b5fcccc6d, type: 3}
+  - {fileID: 2100000, guid: 761017a441ccdcd4f8d7d16ed614aef9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -511,8 +511,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.0077819824
-        value: 0.10486603
+        time: 0.010810852
+        value: 0.027442932
         inSlope: 0
         outSlope: 0
         tangentMode: 0
