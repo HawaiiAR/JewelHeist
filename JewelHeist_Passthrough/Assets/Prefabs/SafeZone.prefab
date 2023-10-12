@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c39cf3ce31fb38e47ac66bbcbcf67447, type: 2}
+  - {fileID: 2100000, guid: e5b78ddcc4cc2874d84388b716b08293, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,6 +144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5299890822540789161}
+  - component: {fileID: 7357461839489677668}
   m_Layer: 0
   m_Name: SafeZone
   m_TagString: SafeZone
@@ -167,3 +168,15 @@ Transform:
   - {fileID: 8118175211834869286}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7357461839489677668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3141113748517978183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1a3affc3320f24ebe2badc0945df82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

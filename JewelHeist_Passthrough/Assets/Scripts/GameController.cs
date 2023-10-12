@@ -12,6 +12,7 @@ namespace GameControl
     {
         public static Action<string> DifficultyLevel;
         public static Action<string> StartGame;
+        public static Action ResetGame;
 
         [SerializeField] private GameObject _menu;
      
@@ -67,15 +68,15 @@ namespace GameControl
                  
                     break;
                 case "impossible":
-                    DifficultyLevel?.Invoke(_dificulty);
-               
+                    DifficultyLevel?.Invoke(_dificulty);        
                     break;
             }
- 
+            _menu.SetActive(false);
         }
 
         private void ActivateStartButton()
         {
+            _menu.SetActive(true);
             _hard_btn.gameObject.SetActive(false);
             _easy_btn.gameObject.SetActive(false);
             _impossible_btn.gameObject.SetActive(false);
@@ -127,6 +128,13 @@ namespace GameControl
             _mainCamera.backgroundColor = _startColor;
         }
 
+        public void ResetGamePlay()
+        {
+            ResetGame?.Invoke();
+            InitialSetup();
+        }
+
+        //this is called from timline
         public void DisplayMenu()
         {
             _menu.SetActive(true);

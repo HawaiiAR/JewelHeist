@@ -25,6 +25,7 @@ namespace lasers
         void Start()
         {
             GameController.StartGame += SetDifficulty;
+
            
         }
 
@@ -40,8 +41,10 @@ namespace lasers
         private void OnDisable()
         {
             GameController.StartGame -= SetDifficulty;
+           
         }
 
+  
         // Update is called once per frame
         void Update()
         {

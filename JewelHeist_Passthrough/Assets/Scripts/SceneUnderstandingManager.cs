@@ -2,9 +2,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using OVR;
-
-using System;
+using GameControl;
 
 namespace SceneUnderstanding 
 
@@ -28,11 +26,13 @@ namespace SceneUnderstanding
         void Start()
         {
             _sceneManeger.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
+            GameController.ResetGame += OnSceneModelLoadedSuccessfully;
         }
 
         private void OnDisable()
         {
             _sceneManeger.SceneModelLoadedSuccessfully -= OnSceneModelLoadedSuccessfully;
+            GameController.ResetGame -= OnSceneModelLoadedSuccessfully;
         }
 
         private void OnSceneModelLoadedSuccessfully()

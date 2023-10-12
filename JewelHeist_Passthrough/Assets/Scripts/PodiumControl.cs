@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using GameControl;
 
 public class PodiumControl : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PodiumControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         _player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         _director = this.GetComponent<PlayableDirector>();
         _lookForPlayer = true;
@@ -48,4 +50,6 @@ public class PodiumControl : MonoBehaviour
     {
         _lookForPlayer = false;
     }
+
+ 
 }

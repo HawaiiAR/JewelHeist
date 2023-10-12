@@ -34,6 +34,8 @@ public class SoundEmitter : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.TryGetComponent<PlayerControl>(out PlayerControl _player)) return;
+
         if (_canSoundAlarm)
         {
             if (_rb.velocity.magnitude >= _velocityAmount)

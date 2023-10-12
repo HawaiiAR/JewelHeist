@@ -608,6 +608,7 @@ GameObject:
   - component: {fileID: 739640102026106043}
   - component: {fileID: 7620563471699072699}
   - component: {fileID: 4142647698085282262}
+  - component: {fileID: 3330772382713577107}
   m_Layer: 0
   m_Name: Podium
   m_TagString: Untagged
@@ -736,6 +737,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &3330772382713577107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600419643313398936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1a3affc3320f24ebe2badc0945df82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5637448344382506830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,7 +1347,7 @@ MonoBehaviour:
   _firePoint: {fileID: 5115824793262210614}
   _fireInterval: 1
   _fireSpeed: 10
-  _laserCount: 050000000f00000064000000
+  _laserCount: 050000000f00000019000000
   _rotator: {fileID: 6724112777684704315}
 --- !u!1 &8995655464655461833
 GameObject:
@@ -2332,7 +2345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163877222076e274ea39afb5757d3ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocityAmount: 0.5
+  _velocityAmount: 1
 --- !u!54 &7919124172363326450 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 3568292823669019629, guid: acf2615d0b0232140bcfe2775e609b7e, type: 3}
