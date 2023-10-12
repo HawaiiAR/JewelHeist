@@ -39,10 +39,10 @@ public class SoundEmitter : MonoBehaviour
                 _velocityAmount = 5;
                 break;
             case "hard":
-                _velocityAmount = 2;
+                _velocityAmount = 1;
                 break;
             case "impossible":
-                _velocityAmount = 1.5f;
+                _velocityAmount = .5f;
                 break;
 
 
