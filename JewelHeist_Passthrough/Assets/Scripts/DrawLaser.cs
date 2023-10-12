@@ -112,6 +112,7 @@ namespace lasers
 
         private void LaserArmedState(bool armedState)
         {
+            Debug.Log("armed state");
             _canHitPlayer = armedState;
         }
     }

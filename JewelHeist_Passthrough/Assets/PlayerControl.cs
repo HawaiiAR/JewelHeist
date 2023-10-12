@@ -8,26 +8,6 @@ public class PlayerControl : MonoBehaviour
     public static Action<bool> PlayerTagable;
     public static Action<bool> PlayerSafe;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("SafeZone"))
-        {
-         
-            Debug.Log("player in safe");
-        }
-    }
 
     private void OnTriggerExit(Collider other)
     {
