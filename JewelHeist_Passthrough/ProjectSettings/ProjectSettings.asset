@@ -142,8 +142,6 @@ PlayerSettings:
   - {fileID: -6169669033059171832, guid: c5265d1e72b80c64b924bec67e1d96ba, type: 2}
   - {fileID: 8423187314120115203, guid: 6f591c8696e55bd41bd5e1dadb187853, type: 2}
   - {fileID: 11400000, guid: 3a7f60cfe1f31624a939c8a76d33cc0c, type: 2}
-  - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type: 3}
-  - {fileID: 4800000, guid: 0945859e5a1034c2cb6dce53cb4fb899, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -173,7 +171,7 @@ PlayerSettings:
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 29
-  AndroidTargetSdkVersion: 33
+  AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
   aotOptions: 
   stripEngineCode: 1
