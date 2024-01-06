@@ -52,8 +52,13 @@ namespace SceneUnderstanding
             {
                 if (obj.GetComponent<Collider>() == null)
                 {
+                 //   BoxCollider boxCollider = obj.gameObject.AddComponent<BoxCollider>();
+                   MeshCollider collider = obj.gameObject.AddComponent<MeshCollider>();
+                    collider.convex = true;
+                  //  boxCollider.center = obj.GetComponent<MeshRenderer>().bounds.center;
+               //     boxCollider.size = obj.bounds.size;
                     //make sure that the mesh prefab is using PlaneOVER mesh with furniture spawner and floor and plane prefabs added
-                    BoxCollider box = obj.gameObject.AddComponent<BoxCollider>();
+                    //  
                     obj.gameObject.AddComponent<AttatchableSurface>();
                 }
             }

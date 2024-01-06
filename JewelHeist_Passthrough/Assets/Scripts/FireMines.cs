@@ -57,7 +57,7 @@ public class FireMines : MonoBehaviour
         GameObject _projectileMine = Instantiate(_mine, _firePoint.transform.position, _firePoint.transform.rotation);
         Rigidbody _rb = _projectileMine.GetComponent<Rigidbody>();
         _rb.AddForce(_firePoint.transform.forward * _fireSpeed, ForceMode.Impulse);
-
+        _rotator.GenerateRandomRotation();
     }
 
     private void SetLevel(string _dificulty)

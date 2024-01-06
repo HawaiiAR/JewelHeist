@@ -217,7 +217,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4350422998566360405}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -230,7 +230,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7245164ab2418f842978c3bf27ce1ec8, type: 2}
+  - {fileID: 2100000, guid: b8bd68487053dd84fbf7fabc4b50bd16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
   - ResizablePrefab: {fileID: 818735711328189117, guid: 803133f69c1b27047946a5c125b88814, type: 3}
     ClassificationLabel: DOOR_FRAME
     _editorClassificationIndex: 5
-  - ResizablePrefab: {fileID: 6927193570541543623, guid: ea9dc18d693f4bc4180075631acbcf0e, type: 3}
+  - ResizablePrefab: {fileID: 818735711328189117, guid: 803133f69c1b27047946a5c125b88814, type: 3}
     ClassificationLabel: WINDOW_FRAME
     _editorClassificationIndex: 6
   - ResizablePrefab: {fileID: 7329915652745048277, guid: 4448d19be5174b04aaffd0f79363db90, type: 3}

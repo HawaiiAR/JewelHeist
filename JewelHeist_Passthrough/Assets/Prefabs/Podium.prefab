@@ -1313,8 +1313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abec493bb4e4f45a2841d884abdce699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
-  _fireSpeed: 0
+  _speed: 15
   _time: 0
   _rotInterval: 0.5
   startSpinning: 0
@@ -1332,9 +1331,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mine: {fileID: 607120190496468287, guid: 8003efa79b310414d923f2c65e3408c1, type: 3}
   _firePoint: {fileID: 5115824793262210614}
-  _fireInterval: 1
+  _fireInterval: 0.5
   _fireSpeed: 10
-  _laserCount: 050000000f00000019000000
+  _laserCount: 0a0000001900000023000000
   _rotator: {fileID: 6724112777684704315}
 --- !u!1 &8995655464655461833
 GameObject:
@@ -2332,7 +2331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163877222076e274ea39afb5757d3ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocityAmount: 1.5
 --- !u!54 &7919124172363326450 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 3568292823669019629, guid: acf2615d0b0232140bcfe2775e609b7e, type: 3}
@@ -2642,7 +2640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163877222076e274ea39afb5757d3ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocityAmount: 0.5
 --- !u!114 &1377049938775392180
 MonoBehaviour:
   m_ObjectHideFlags: 0

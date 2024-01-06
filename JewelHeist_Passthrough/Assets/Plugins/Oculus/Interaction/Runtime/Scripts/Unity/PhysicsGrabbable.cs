@@ -83,16 +83,21 @@ namespace Oculus.Interaction
             switch (evt.Type)
             {
                 case PointerEventType.Select:
-                    if (_grabbable.SelectingPointsCount == 1 && !_isBeingTransformed)
+                    if (_grabbable.SelectingPointsCount >= 1 && !_isBeingTransformed)
                     {
-                        DisablePhysics();
+                        //  DisablePhysics();
+                        _rigidbody.isKinematic = true;
+                        _isBeingTransformed = true;
                     }
 
                     break;
                 case PointerEventType.Unselect:
                     if (_grabbable.SelectingPointsCount == 0)
                     {
-                        ReenablePhysics();
+                        _rigidbody.useGravity = true;
+                        // ReenablePhysics();
+                        _rigidbody.isKinematic = false;
+                        _isBeingTransformed = false;
                     }
 
                     break;
@@ -103,11 +108,14 @@ namespace Oculus.Interaction
         {
             _isBeingTransformed = true;
             CachePhysicsState();
+
+  
             _rigidbody.isKinematic = true;
         }
 
         private void ReenablePhysics()
         {
+         
             _isBeingTransformed = false;
             // update the mass based on the scale change
             if (_scaleMassWithSize)
@@ -136,6 +144,8 @@ namespace Oculus.Interaction
         {
             if (_hasPendingForce)
             {
+              
+
                 _hasPendingForce = false;
                 _rigidbody.AddForce(_linearVelocity, ForceMode.VelocityChange);
                 _rigidbody.AddTorque(_angularVelocity, ForceMode.VelocityChange);

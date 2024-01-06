@@ -10,7 +10,7 @@ public class SoundEmitter : MonoBehaviour
 
     bool _canSoundAlarm;
     Rigidbody _rb;
-    [SerializeField] private float _velocityAmount;
+    private float _velocityAmount;
 
     private void Start()
     {
@@ -39,10 +39,10 @@ public class SoundEmitter : MonoBehaviour
                 _velocityAmount = 5;
                 break;
             case "hard":
-                _velocityAmount = 1;
+                _velocityAmount = 3;
                 break;
             case "impossible":
-                _velocityAmount = .5f;
+                _velocityAmount = 2f;
                 break;
 
 

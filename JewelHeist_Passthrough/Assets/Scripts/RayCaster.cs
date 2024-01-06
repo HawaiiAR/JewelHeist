@@ -32,6 +32,7 @@ public class RayCaster : MonoBehaviour
             Debug.DrawRay(_rayStart.transform.position, _rayStart.forward,  Color.red, _rayDistance);
             Debug.Log("drawing ray");
             RaycastHit _hit;
+          
             if(Physics.Raycast(_ray, out _hit, _rayDistance))
             {
                 if (_hit.collider.gameObject.TryGetComponent(out PodiumControl _podiumControl))
