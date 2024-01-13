@@ -22,7 +22,7 @@ public class PodiumControl : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
         _director = this.GetComponent<PlayableDirector>();
         _lookForPlayer = true;
-        Invoke(nameof(StopLooking), 2);
+      //  Invoke(nameof(StopLooking), 2);
     }
 
     private void OnDisable()
@@ -51,8 +51,10 @@ public class PodiumControl : MonoBehaviour
         _director.Play();
     }
 
+   
 
-    private void StopLooking()
+
+    public void StopLooking()
     {
         _lookForPlayer = false;
     }

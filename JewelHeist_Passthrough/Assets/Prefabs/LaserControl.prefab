@@ -452,7 +452,7 @@ MonoBehaviour:
   swingLaser: 0
   _rayDistance: 1000
   _laser: {fileID: 4722732232469089562}
-  _laserWidth: 0.045
+  _laserWidth: 0.025
   _laserFirePoint: {fileID: 4151686242922386973}
   _rotAngle: 90
   _rotOffset: 45

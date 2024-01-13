@@ -15,9 +15,11 @@ namespace lasers
         private Vector3 _min;
         private Vector3 _max;
 
+        FireMines _fireMines;
+
         private DrawLaser _laser;
         private Rigidbody _rb;
-
+        private float[] _offsets = { -.3f, .3f, -.6f, .6f};
         bool isPlaced = false;
         bool isMovingForward = true;
 
@@ -25,12 +27,13 @@ namespace lasers
         void Start()
         {
             GameController.StartGame += SetDifficulty;
-
+         
            
         }
 
         private void OnEnable()
         {
+            _fireMines = GameObject.FindObjectOfType<FireMines>();
             //  _gameController = FindObjectOfType<GameController>();
             _laser = GetComponentInChildren<DrawLaser>();
             _rb = this.GetComponent<Rigidbody>();
@@ -68,9 +71,27 @@ namespace lasers
 
                 _min = new Vector3(_laserBody.transform.localPosition.x - _distance, _laserBody.transform.localPosition.y, _laserBody.transform.localPosition.z);
                 _max = new Vector3(_laserBody.transform.localPosition.x + _distance, _laserBody.transform.localPosition.y, _laserBody.transform.localPosition.z);
+              
+                _fireMines.AddMine();
+            }
+
+            if(collision.gameObject.GetComponent<LaserMineControl>())
+            {
+                _fireMines.AddFaultyMine();
+                Destroy(this.gameObject);
+                //  Destroy(this.gameObject);
+
+                /*  this.transform.rotation = collision.gameObject.transform.rotation;
+                   Debug.Log("collision" + collision.gameObject.name);
+
+                   int randOffset = Random.Range(0, _offsets.Length);
+                   float _offsetX = _offsets[randOffset];
+                   float _offsetY = _offsets[randOffset];
+                   Transform center = collision.gameObject.transform;
+                   this.transform.position = new Vector3(center.position.x + _offsetX,  center.position.y + _offsetY, center.localPosition.z);*/
 
             }
-            else
+            if(collision.gameObject.CompareTag("Container"))
             {
                 Destroy(this.gameObject);
             }

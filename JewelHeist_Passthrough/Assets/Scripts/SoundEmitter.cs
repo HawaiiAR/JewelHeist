@@ -36,13 +36,13 @@ public class SoundEmitter : MonoBehaviour
         switch (_difficulty)
         {
             case "easy":
-                _velocityAmount = 5;
-                break;
-            case "hard":
                 _velocityAmount = 3;
                 break;
+            case "hard":
+                _velocityAmount = 2;
+                break;
             case "impossible":
-                _velocityAmount = 2f;
+                _velocityAmount = 1f;
                 break;
 
 

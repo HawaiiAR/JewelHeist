@@ -7,6 +7,8 @@ TagManager:
   - RoomLight
   - Hand
   - SafeZone
+  - PodiumTrigger
+  - Container
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - UI
   - Bot
   - Head
-  - 
-  - 
-  - 
+  - RayTarget
+  - GlassBox
+  - Jewel
   - 
   - 
   - 

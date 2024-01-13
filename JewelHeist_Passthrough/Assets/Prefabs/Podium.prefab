@@ -662,7 +662,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: e94bc93bb9193ed4fb06bff14a80980b, type: 2}
-  m_InitialState: 0
+  m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -683,6 +683,8 @@ PlayableDirector:
     value: {fileID: 6465840453333298000}
   - key: {fileID: 7793650848081128311, guid: e94bc93bb9193ed4fb06bff14a80980b, type: 2}
     value: {fileID: 4142647698085282262}
+  - key: {fileID: 6944429989849326523, guid: e94bc93bb9193ed4fb06bff14a80980b, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!65 &7620563471699072699
@@ -702,10 +704,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.45374313, y: 3.185072, z: 0.5374455}
-  m_Center: {x: 0, y: 1.6167867, z: 0}
+  m_Size: {x: 0.75889087, y: 0.2383705, z: 0.7320312}
+  m_Center: {x: 0, y: 0.00018882875, z: 0}
 --- !u!114 &4142647698085282262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,12 +723,27 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: d4ec8ecabe0587b459d8121b1e641765, type: 2}
+    - {fileID: 11400000, guid: 577ad00491a246d418d1585b9f85625c, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 6121996425094118702}
           m_TargetAssemblyTypeName: PodiumControl, Assembly-CSharp
           m_MethodName: TimelineFinished
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6121996425094118702}
+          m_TargetAssemblyTypeName: PodiumControl, Assembly-CSharp
+          m_MethodName: StopLooking
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1333,8 +1350,10 @@ MonoBehaviour:
   _firePoint: {fileID: 5115824793262210614}
   _fireInterval: 0.5
   _fireSpeed: 10
-  _laserCount: 0a0000001900000023000000
+  _laserCount: 190000001900000019000000
   _rotator: {fileID: 6724112777684704315}
+  _faultiMines: 
+  _activeiMines: 
 --- !u!1 &8995655464655461833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,6 +1843,10 @@ PrefabInstance:
       value: Gem
       objectReference: {fileID: 0}
     - target: {fileID: 7324362284901748019, guid: e12ab965973547a42a8b926ef59ca16f, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324362284901748019, guid: e12ab965973547a42a8b926ef59ca16f, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1957,7 +1980,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421150003369270095, guid: acf2615d0b0232140bcfe2775e609b7e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 421150003369270095, guid: acf2615d0b0232140bcfe2775e609b7e, type: 3}
+      propertyPath: m_TagString
+      value: Container
       objectReference: {fileID: 0}
     - target: {fileID: 1086183269547228055, guid: acf2615d0b0232140bcfe2775e609b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2070,6 +2097,10 @@ PrefabInstance:
     - target: {fileID: 4948905863760851302, guid: acf2615d0b0232140bcfe2775e609b7e, type: 3}
       propertyPath: m_Size.x
       value: 0.0015203657
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948905863760851302, guid: acf2615d0b0232140bcfe2775e609b7e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4948905863760851302, guid: acf2615d0b0232140bcfe2775e609b7e, type: 3}
       propertyPath: m_Center.x
@@ -2239,8 +2270,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.016750442, y: 0.0012080888, z: 0.016600374}
-  m_Center: {x: -0.00039339354, y: 0.0084488755, z: 0.008300196}
+  m_Size: {x: 0.016750442, y: 0.015454501, z: 0.016600376}
+  m_Center: {x: -0.0003933936, y: 0.0013256847, z: 0.008300196}
 --- !u!65 &2475789844798686963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2260,8 +2291,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.01708645, y: 0.000872073, z: 0.016600385}
-  m_Center: {x: 0, y: -0.008107193, z: 0.008300194}
+  m_Size: {x: 0.017086448, y: 0.014366931, z: 0.016600389}
+  m_Center: {x: 0, y: -0.0013598003, z: 0.008300192}
 --- !u!65 &2303762493030561423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2279,10 +2310,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.000865824, y: 0.017086454, z: 0.016600385}
-  m_Center: {x: -0.008110313, y: -3.0722772e-17, z: 0.008300193}
+  m_Size: {x: 0.0050225747, y: 0.017086454, z: 0.016600385}
+  m_Center: {x: -0.006031924, y: -3.0722752e-17, z: 0.008300193}
 --- !u!65 &7698837664032685780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2300,10 +2331,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.01708645, y: 0.017086454, z: 0.0012737548}
-  m_Center: {x: 0, y: -6.912612e-17, z: 0.01596352}
+  m_Size: {x: 0.017086448, y: 0.017086454, z: 0.015618736}
+  m_Center: {x: 0, y: -2.4803196e-17, z: 0.008791036}
 --- !u!114 &6146653589132999719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2367,6 +2398,10 @@ PrefabInstance:
     - target: {fileID: 1883029970095409116, guid: e0084220eefd0e0468b4456c09e6b1cd, type: 3}
       propertyPath: m_Name
       value: Gem 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883029970095409116, guid: e0084220eefd0e0468b4456c09e6b1cd, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1883029970095409116, guid: e0084220eefd0e0468b4456c09e6b1cd, type: 3}
       propertyPath: m_IsActive

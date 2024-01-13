@@ -22,6 +22,8 @@ namespace GameControl
         [SerializeField] private GameObject _start_btn;
         [SerializeField] private GameObject _resetGame_btn;
 
+      
+
         [SerializeField] private Camera _mainCamera;
         [SerializeField] Color _startColor;
         [SerializeField] Color _gameOverColor;
@@ -140,6 +142,8 @@ namespace GameControl
         {
             _menu.SetActive(true);
         }
+
+
     }
 }
 

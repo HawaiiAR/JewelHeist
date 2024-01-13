@@ -14,7 +14,11 @@ namespace SceneUnderstanding
 
         [SerializeField] private GameObject _podium;
         [SerializeField] private GameObject _safeZone;
+        [SerializeField] private GameObject _instructions;
+        [SerializeField] private GameObject _groundTarget;
         [SerializeField] private Transform _player;
+
+        private Vector3 _floorPos;
 
         private void Awake()
         {
@@ -27,12 +31,15 @@ namespace SceneUnderstanding
         {
             _sceneManeger.SceneModelLoadedSuccessfully += OnSceneModelLoadedSuccessfully;
             GameController.ResetGame += OnSceneModelLoadedSuccessfully;
+            _groundTarget.SetActive(false);
+           // GameController.StartGame += ActivateSafeZone;
         }
 
         private void OnDisable()
         {
             _sceneManeger.SceneModelLoadedSuccessfully -= OnSceneModelLoadedSuccessfully;
             GameController.ResetGame -= OnSceneModelLoadedSuccessfully;
+          //  GameController.StartGame -= ActivateSafeZone;
         }
 
         private void OnSceneModelLoadedSuccessfully()
@@ -52,13 +59,10 @@ namespace SceneUnderstanding
             {
                 if (obj.GetComponent<Collider>() == null)
                 {
-                 //   BoxCollider boxCollider = obj.gameObject.AddComponent<BoxCollider>();
+             
                    MeshCollider collider = obj.gameObject.AddComponent<MeshCollider>();
                     collider.convex = true;
-                  //  boxCollider.center = obj.GetComponent<MeshRenderer>().bounds.center;
-               //     boxCollider.size = obj.bounds.size;
-                    //make sure that the mesh prefab is using PlaneOVER mesh with furniture spawner and floor and plane prefabs added
-                    //  
+               
                     obj.gameObject.AddComponent<AttatchableSurface>();
                 }
             }
@@ -69,19 +73,38 @@ namespace SceneUnderstanding
 
             foreach (var _floor in _floors)
             {
-                /* Material _mat = _floor.gameObject.GetComponent<Renderer>().material;
-                  _mat.SetColor("_Color", Color.red);
-                  Debug.Log("Change floor Color");*/
+             
+                _floorPos = _floor.transform.position;
 
-                //instantiate podium
-                Instantiate(_podium, _floor.transform.position, Quaternion.identity);
-
-                //instantiate safezone
-                Vector3 _safeZonePos = new Vector3(_player.transform.position.x, _floor.transform.position.y, _player.transform.position.z);
-                Instantiate(_safeZone, _safeZonePos, Quaternion.identity);
+                _instructions.transform.position = new Vector3(_floor.transform.position.x, _player.transform.position.y, _floor.transform.position.z);
+                _instructions.SetActive(true);
 
             }
      
+        }
+
+        public void ActivateGroundTarget()
+        {
+            _groundTarget.transform.position = new Vector3(_floorPos.x, .1f, _floorPos.z);
+            _groundTarget.SetActive(true);
+        }
+
+        public void ActivatePodium()
+        {
+            _groundTarget.SetActive(false);
+            _instructions.SetActive(false);
+    
+            Instantiate(_podium, _floorPos, Quaternion.identity);
+            Invoke(nameof(ActivateSafeZone), 2);
+
+        }
+
+        public void ActivateSafeZone()
+        { 
+            //instantiate safezone
+            Vector3 _safeZonePos = new Vector3(_player.transform.position.x, _floorPos.y, _player.transform.position.z);
+            Instantiate(_safeZone, _safeZonePos, Quaternion.identity);
+           
         }
 
 
